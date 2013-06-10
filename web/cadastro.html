@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CLTV</title>
+<script src="jquery-1.9.1.min.js"></script>
+<script src="jquery.cookie.js"></script>
+<script src="cltv.js"></script> 
+<link rel="stylesheet" type="text/css" href="cltv.css"/>
+
+<style type="text/css">
+</style>
+</head>
+
+<body>
+
+<!-- corpo principal pagina -->
+<div id="principal">
+    <!-- cabeçalho da pagina, funciona como uma camada para esconder a div login ou a div logado de acordo com a situação-->
+    <div id="cabecalho"></div>
+    <!-- cabeçalho com sistema de login a ser ocultado quando o usuario estiver logado -->
+    <div id="login">
+        <form>
+        Usuario: 
+        <label for="loginName"></label>
+        <label for="loginName3"></label>
+        <input type="text" name="loginName" id="loginName3" /> 
+        Senha: 
+        <label for="loginSenha"></label>
+        <input type="password" name="loginSenha" id="loginSenha" />
+        <input type="button" name="btnlogin" id="btnlogin" value="Login" />
+        <a href="cadastro.html" style="color:#FFF; font-size:8pt" title="Clique aqui para se cadastrar!">(?)&nbsp;&nbsp;</a>
+        </form>       
+    </div>
+    
+    <!-- cabeçalho para quando estiver logado -->
+    <div id="logado">
+        <ul>
+            <li><a href="#">Nome</a>
+                <ul>
+                    <li><a href="cadArtigo.html">Cadastrar Artigo</a></li>
+                    <li><a href="altArtigo.html">Alterar Artigo</a></li>
+                    <li><a href="delArtigo.html">Deletar Artigo</a></li>
+                </ul>
+            </li>
+        </ul>
+        
+    </div>
+    <!-- rodapé com link opção de se cadastrar-->
+    <div id="rodape">CLTV - Biblioteca Digital de Artigos Científicos</div>
+    
+    <!-- Caminho de navegação iniciando em "Busca" -->
+    <div id="caminho"><a href="index.html">>>Busca</a><a href="#">>>Cadastro</a></div>
+    
+   	<!-- Div do conteudo-->
+    <div id="conteudo">
+        <div id="cadastrar">
+            <form action="#" method="post" id="cadUsuario">
+                <table border="0" align="center" width="100%">
+                    <tr>
+                        <td>Nome:</td>
+                        <td><input name="txtNome" type="text" size="15" id="nome" value="Primeiro nome" onBlur="arruma_entrada(this.value,'nome');validaNome(this.value,'imgnome');" onFocus="limpa_campo('nome');"/></td>
+                        <td  width="20" height="20"><img src="branco.gif" id="imgnome" title="" width="20" height="20" align="middle"/></td>
+                    </tr>
+                    <tr>
+                    	<td>Sobrenome:</td>
+                        <td><input name="txtSobrenome" type="text" size="15" id="sobrenome" value="Ultimo nome" onBlur="arruma_entrada(this.value,'sobrenome');validaSNome(this.value,'imgsnome');" onFocus="limpa_campo('sobrenome');"/></td>
+                        <td  width="20" height="20"><img src="branco.gif" id="imgsnome" title="" width="20" height="20" align="middle"/></td>
+                    </tr>
+                    <tr>
+                    	<td>Email:</td>
+                        <td><input name="txtEmail" type="text" size="15" id="email" value="email valido" onBlur="arruma_entrada(this.value,'email');validaEmail(this.value,'imgemail');" onFocus="limpa_campo('email'); limpa_campo('cemail');"/></td>
+                        <td  width="20" height="20"><img src="branco.gif" id="imgemail" title="" width="20" height="20" align="middle"/></td>
+                    </tr>
+                    <tr>
+                    	<td>Confirmar email:</td>
+                        <td><input name="txtCEmail" type="text" size="15" id="cemail" value="repita o email" onBlur="arruma_entrada(this.value,'cemail');verificaEmail(this.value,'imgcemail');" onFocus="limpa_campo('cemail');"/></td>
+                        <td width="20" height="20"><img src="branco.gif" id="imgcemail" title="" width="20" height="20" align="middle"/></td>
+                    </tr>
+                    <tr>
+                    	<td>Senha:</td>
+                        <td><input name="txtSenha" type="password" id="senha" size="15" maxlength="8" value="senha" onFocus="limpa_campo('senha');" onBlur="validaSenha(this.value,'imgsenha')"/></td>
+                        <td width="20" height="20"><img src="branco.gif" id="imgsenha" title="" width="20" height="20" align="middle"/></td>
+                    </tr>
+                    <tr>
+                    	<td>Confirmar senha:</td>
+                        <td><input name="txtCSenha" type="password" size="15" id="csenha" value="senha" onFocus="limpa_campo('csenha');"  onBlur="verificaSenha(this.value,'imgcsenha')"/></td>
+                        <td width="20" height="20"><img src="branco.gif" id="imgcsenha" title="" width="20" height="20" align="middle"/></td>
+                    </tr>
+                    <tr>
+                    	<td>Data de  Nascimento:</td>
+                        <td><input name="txtDataNasc" type="text" id="datanasc" onFocus="limpa_campo('datanasc');" OnKeyUp="mascara_data(this.value,'datanasc')" value="dd/mm/aaaa" size="15" maxlength="10"/></td>
+                        <td width="20" height="20"><img src="branco.gif" id="imgdata" title="" width="20" height="20" align="middle"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center"><input name="btnCadastrar" type="button" id="btnCad" value="Cadastrar" /></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    
+    
+    
+</div>
+<script> 
+    if(!$.cookie('logado')){
+        $('#logado').hide();
+    }else{
+        var n = $.cookie('logado');
+        if(n == 1){
+            $('#login').hide();
+            $('#logado').show();
+            window.location.replace('index.html');
+        }else{
+            $('#login').show();
+            $('#logado').hide();
+        }
+    }
+    
+    
+    //$(document).ready(function(){
+        $('#btnlogin').click(function(){
+          
+        var login = $('#loginName').val();
+        var senha = $('#loginSenha').val();
+        $.cookie('logado','1',{expires: 7})
+        //if(login==senha){
+            $('#login').hide();
+            $('#logado').show();
+            window.location.replace('index.html');
+        //}
+    });
+        $('#btnCad').click(function(){
+            //TODO: funcao para verificar os campos, se estiver ok, libera o AJAX
+            var nome = $('#txtNome').val();
+            var sobre = $('#txtSobrenome').val();
+            var email = $('#txtEmail').val();
+            var senha = $('#txtSenha').val();
+            var data = $('#txtDataNasc').val();
+            $.ajax({
+                type: 'post',
+                url: 'CadUser',
+                data: {nome: nome,
+                       sobrenome: sobre,
+                       email: email,
+                       senha: senha,
+                       data: data},
+                success: function(status){
+                    window.alert("post feito");
+                    if(status==='OK'){
+                        window.alert('Cadastro realizado com sucesso');
+                    }else{
+                        window.alert('Favor verificar os campos novamente');
+                    }
+                }
+            });
+            
+        });
+    //});
+    
+    
+    
+    
+    </script>
+</body>
+</html>

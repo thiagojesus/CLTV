@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CLTV</title>
+<link rel="stylesheet" type="text/css" href="cltv.css"/>
+
+<style type="text/css">
+</style>
+</head>
+
+<body>
+
+<!-- corpo principal pagina -->
+<div id="principal">
+    <!-- cabeçalho da pagina, funciona como uma camada para esconder a div login ou a div logado de acordo com a situação-->
+    <div id="cabecalho"></div>
+    <!-- cabeçalho com sistema de login a ser ocultado quando o usuario estiver logado -->
+    <div id="login">
+        <form action="login" method="get">
+        Usuario: 
+        <label for="loginName"></label>
+        <label for="loginName3"></label>
+        <input type="text" name="loginName" id="loginName3" /> 
+        Senha: 
+        <label for="loginSenha"></label>
+        <input type="password" name="loginSenha" id="loginSenha" />
+        <input type="submit" name="btnlogin" id="btnlogin" value="Login" />
+        <a href="cadastro.html" style="color:#FFF; font-size:8pt" title="Clique aqui para se cadastrar!">(?)&nbsp;&nbsp;</a>
+        </form>       
+    </div>
+    
+    <!-- cabeçalho para quando estiver logado -->
+    <div id="logado">
+        <ul>
+            <li><a href="#">Nome</a>
+                <ul>
+                    <li><a href="cadArtigo.html">Cadastrar Artigo</a></li>
+                    <li><a href="altArtigo.html">Alterar Artigo</a></li>
+                    <li><a href="delArtigo.html">Deletar Artigo</a></li>
+                </ul>
+            </li>
+        </ul>
+        
+    </div>
+    <!-- rodapé com link opção de se cadastrar-->
+    <div id="rodape">CLTV - Biblioteca Digital de Artigos Científicos</div>
+    
+    <!-- Caminho de navegação iniciando em "Busca" -->
+    <div id="caminho" style="z-index:0;"><a href="index.html">>>Busca</a><a href="#">>>Resultado</a></div>
+    
+   	<!-- Div do conteudo-->
+    <div id="conteudo">
+    
+    <!-- iframe chamando a ferramenta de busca-->
+      <iframe align="middle" id="miniframeBusca" src="frameBuscar.html" style="z-index:-1"></iframe>
+      <img src="exemplobusca.gif" / style="position:absolute; top:270px; left:32%; z-index:-1;">
+    
+    </div>
+      
+       
+    
+    
+    
+</div>
+</body>
+</html>

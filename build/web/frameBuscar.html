@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+<script language="JavaScript" src="cltv.js"></script> 
+
+<style type="text/css">
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	font: Verdana, Geneva, sans-serif;
+	font-size:12px;
+	text-align:center;
+}
+</style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="index.html" target="_top">
+  <p>
+    <label for="busca"></label>
+  <img src="cltv.png" width="50%" height="40%" alt="CLTV" /></p>
+  <p>
+    <input name="busca" type="text" id="busca" size="60" />
+  </p>
+  <p>
+    <input name="radio" type="radio" id="titulo" value="titulo" checked="checked" />
+    <label for="titulo">Busque por titulo.</label>
+    <input type="radio" name="radio" id="autor" value="autor" />
+    <label for="autor">Busque por autor</label>
+    <input type="radio" name="radio" id="data" value="data" />
+    <label for="data">Busque publicados </label>
+    <label for="data1"></label>
+    <label for="data">entre    
+      <input name="data1" type="text" id="data1" OnFocus="limpa_campo('data1')" OnKeyUp="mascara_data(this.value,'data1')" value="00/00/0000" size="10" maxlength="10"/> 
+      e
+<input name="data2" type="text" id="data2" OnFocus="limpa_campo('data2')" OnKeyUp="mascara_data(this.value,'data2')" value="00/00/0000" size="10" maxlength="10" onBlur="verificaBuscaData()"/>
+    .</label>
+  </p>
+  <p>
+    <input type="submit" name="btnBuscar" id="btnBuscar" value="Buscar" />
+  </p>
+</form>
+</body>
+</html>
